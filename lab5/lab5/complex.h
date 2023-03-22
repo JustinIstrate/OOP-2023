@@ -45,67 +45,17 @@ class Complex {
     Complex operator--(int);
 };
 
-Complex operator+(const Complex& l, const Complex& r) {
-    double real = l.real() + r.real();
-    double imag = l.imag() + r.imag();
-    Complex rez(real, imag);
-    return rez;
-}
-Complex operator+(const Complex& l, double r) {
-    Complex rez(r, 0);
-    return l + rez;
-}
-Complex operator+(double l, const Complex& r) {
-    Complex aux(l, 0);
-    return aux + r;
-}
+Complex operator+(const Complex& l, const Complex& r);
+Complex operator+(const Complex& l, double r);
+Complex operator+(double l, const Complex& r);
 
-Complex operator-(const Complex& obj) {
-    double real = 0 - obj.real();
-    double imag = 0 - obj.imag();
-    Complex rez(real, imag);
-    return rez;
-}
-Complex operator-(const Complex& l, const Complex& r) {
-    double real = l.real() - r.real();
-    double imag = l.imag() - r.imag();
-    Complex rez(real, imag);
-    return rez;
-}
-Complex operator-(const Complex& l, double r) {
-    Complex rez(r, 0);
-    return l - rez;
-}
-Complex operator-(double l, const Complex& r) {
-    Complex aux(l, 0);
-    return aux - r;
-}
-Complex operator*(const Complex& l, const Complex& r) {
-    double real = l.real() * r.real()-l.imag()*r.imag();
-    double imag = l.real() * r.imag()+l.imag()*r.real();
-    Complex rez(real, imag);
-    return rez;
-}
-Complex operator*(const Complex& l, double r) {
-    Complex rez(r, 0);
-    return l * rez;
-}
-Complex operator*(double l, const Complex& r) {
-    Complex aux(l, 0);
-    return aux * r;
-}
-bool operator==(const Complex& l, const Complex& r) {
-    if (l.real() == r.real() && l.imag() == r.imag())
-        return true;
-    return false;
-}
-bool operator!=(const Complex& l, const Complex& r) {
-    if (l.real() == r.real() && l.imag() == r.imag())
-        return false;
-    return true;
-}
-std::ostream& operator<<(std::ostream& out, const Complex& complex)
-{
-    //out << complex.real() << "+" << complex.imag() << "i";
-    return out;
-}
+Complex operator-(const Complex& obj);
+Complex operator-(const Complex& l, const Complex& r);
+Complex operator-(const Complex& l, double r);
+Complex operator-(double l, const Complex& r);
+Complex operator*(const Complex& l, const Complex& r);
+Complex operator*(const Complex& l, double r);
+Complex operator*(double l, const Complex& r);
+bool operator==(const Complex& l, const Complex& r) ;
+bool operator!=(const Complex& l, const Complex& r);
+std::ostream& operator<<(std::ostream& out, const Complex& complex);
