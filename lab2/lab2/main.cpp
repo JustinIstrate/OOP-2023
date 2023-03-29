@@ -21,6 +21,9 @@ int main() {
     ep6.set_year(1983);
     ep6.set_length(131);
 
+    cout << ep6.get_name() << ' ' << ep6.get_length() << ' ' << ep6.get_score() << ' ' << ep6.get_year() << ' '
+         << ep6.get_passedyears();
+
     printf(
           R"(
 ep4, ep5 comparisons:
@@ -35,7 +38,9 @@ passed years: %d
           movie_compare_score(ep4, ep5),
           movie_compare_length(ep4, ep5),
           movie_compare_passed_years(ep4, ep5));
+    cout << endl;
 
+    cout << "Aici incepe movieseries" << endl;
     MovieSeries series;
     series.init();
     series.add(&ep5);
@@ -44,4 +49,5 @@ passed years: %d
 
     series.sort();
     series.print();
+    return 0;
 }

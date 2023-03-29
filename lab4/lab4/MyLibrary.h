@@ -23,7 +23,7 @@ class MyLibrary {
     // constructor in care setam doar obiectul pe care il vom folosi pentru afisare, ar trebui initializate TOATE
     // variabilele
     MyLibrary(std::ostream& output_stream) ;
-
+    MyLibrary(std::ostream& output_stream,const MyLibrary& copy);
     // lista intializare: obiectul pe care il vom folosi pentru afisare, numar de carti, vector de id-uri de carti -->
     // aloca memorie pentru vector si copiaza numerele
     MyLibrary(std::ostream& output_stream, unsigned books_count, int* books);

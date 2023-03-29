@@ -29,10 +29,6 @@ using namespace std;
 // };
 
 int main() {
-
-    auto number = new NumberValue(12);
-    number->print(std::cout);
-
     auto array_numbers = new ArrayValue();
     array_numbers->add(new NumberValue(5));
     array_numbers->add(new NumberValue(10));

@@ -1,7 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Movie.h"
 #include <cstring>
+#include <string>
 #include <stdio.h>
 #include <algorithm>
+using namespace std;
 void Movie::set_name(const char* text) {
     strcpy(this->name, text);
 }
@@ -18,28 +21,43 @@ void Movie::set_length(int length) {
     this->length = length;
 }
 
+const char* Movie::get_name() {
+    return name;
+}
+
+int Movie::get_year() const {
+    return year;
+}
+
+double Movie::get_score() const {
+    return score;
+}
+
+int Movie::get_length() const {
+    return length;
+}
+
+int Movie::get_passedyears() const {
+    return 2023 - year;
+}
+
 void MovieSeries::init() {
-    this->count = 0;
+    count = 0;
 }
 
 void MovieSeries::add(Movie* p) {
-
-    this->v[count++] = *p;
+    v[count++] = *p;
 }
 
 void MovieSeries::sort() {
-    for (int i = 0; i < count-1; i++)
+    for (int i = 0; i < count - 1; i++)
         for (int j = i + 1; j < count; j++)
-            if (this->v[i].get_passedyears() > this->v[j].get_passedyears())
-                std::swap(this->v[i], this->v[j]);
+            if (v[i].get_passedyears() > v[j].get_passedyears())
+                std::swap(v[i], v[j]);
 }
 
 void MovieSeries::print() {
     for (int i = 0; i < count; i++)
-        printf(
-              "Movie number %d: name %c :  '/n' score %d: '/n' length %d: '/n' year %d: ",
-              this->v[i].get_name(),
-              this->v[i].get_score(),
-              this->v[i].get_length(),
-              this->v[i].get_year());
+        cout << "Movie name :" << v[i].get_name() << ", score : " << v[i].get_score()
+             << " , length: " << v[i].get_length() << " , year : " << v[i].get_year() << endl;
 }

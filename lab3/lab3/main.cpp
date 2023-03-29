@@ -29,7 +29,7 @@ int main() {
 using namespace std;
 int main() {
     Canvas canvas(10, 50);
-    canvas.set_pixels(4, 4, 25, 124, 3, 33, 124, 2, 24, 95, 4, 3, 95);
+    canvas.set_pixels(4, 4, 25, 4, 3, 33, 124, 2, 24, 95, 4, 3, 95);
     canvas.set_pixels(3, 7, 2, 95, 4, 21, 124, 5, 16, 95);
     canvas.set_pixels(3, 4, 41, 124, 7, 1, 124, 5, 8, 92);
     canvas.set_pixels(3, 1, 31, 40, 2, 3, 95, 2, 41, 124);
@@ -64,7 +64,7 @@ int main() {
     canvas.set_pixels(3, 4, 11, 41, 4, 10, 95, 5, 1, 92);
     canvas.set_pixels(4, 2, 43, 124, 3, 17, 95, 5, 4, 44, 4, 36, 40);
     canvas.set_pixels(1, 5, 43, 46);
-
+  
     canvas.print();
     return 0;
 }

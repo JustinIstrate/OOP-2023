@@ -6,7 +6,14 @@
 #include <cstdarg>
 using namespace std;
 
-MyLibrary::MyLibrary(std::ostream& output_stream) : output_stream(output_stream), books_count(-1), books(NULL){};
+MyLibrary::MyLibrary(std::ostream& output_stream) : output_stream(output_stream), books_count(-1), books(NULL) {
+}
+
+MyLibrary::MyLibrary(std::ostream& output_stream,const MyLibrary& copy) {
+    books_count = copy.books_count;
+    output_stream = copy.output_stream;
+    books = copy.books;
+}
 
 MyLibrary::MyLibrary(std::ostream& output_stream, unsigned books_count, int* books)
     : output_stream(output_stream), books_count(books_count) {

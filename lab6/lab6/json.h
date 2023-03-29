@@ -8,6 +8,7 @@ using namespace std;
 
 class JsonValue {
     int xvalue;
+
   public:
     virtual ~JsonValue() = 0;
 
@@ -43,18 +44,26 @@ class StringValue : public JsonValue {
 class ArrayValue : public JsonValue {
     JsonValue* xvalue[16];
     int count;
-    public:
+
+  public:
     ArrayValue();
-    void add(JsonValue* value);
+    void add(NumberValue* value);
+    void add(StringValue* value);
     virtual void print(std::ostream& out);
 };
 class ObjectValue : public JsonValue {
-    char* xname;
+    string xname[16];
     JsonValue* xvalue[16];
     int count;
-    public:
+
+  public:
     ObjectValue();
-    void add(const char* name, JsonValue* value);
+    void add(const string name, StringValue* value);
+    void add(const string name, BoolValue* value);
+    void add(const string name, NullValue* value);
+    void add(const string name, NumberValue* value);
+    void add(const string name, ArrayValue* value);
+    void add(const string name, ObjectValue* value);
     virtual void print(std::ostream& out);
     operator unsigned() const;
 };
