@@ -76,15 +76,17 @@ void ObjectValue::add(const string name, ObjectValue* value) {
 }
 
 void ObjectValue::print(std::ostream& out) {
-    out << "{";
-    out << xname[0] << ": ";
+    out << "{ \"";
+    out << xname[0] << "\" : \"";
     xvalue[0]->print(out);
+    out << "\"";
     for (int i = 1; i < count; i++) {
-        out << ", ";
-        out << xname[i] << ": ";
+        out << ", \"";
+        out << xname[i] << "\": \"";
         xvalue[i]->print(out);
+        out << "\"";
     }
-    out << "}";
+    out << " }";
 }
 
 ObjectValue::operator unsigned() const {
