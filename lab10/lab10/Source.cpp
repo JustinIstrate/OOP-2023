@@ -18,6 +18,16 @@ class CommandManager {
     void run();
 };
 
+class FileException : public std::exception {
+  private:
+    string filename;
+    string message;
+
+  public:
+    FileException(const std::string& filename, const std::string& message);
+    virtual const char* what() const noexcept override;
+};
+
 void CommandManager::add(string name, function<void(vector<string>)> fn) {
     commands[name] = fn;
 }
@@ -64,26 +74,26 @@ void CommandManager::run() {
 
 int main() {
     CommandManager manager;
-
     auto ping = [](vector<string> args) { printf("pong!\n"); };
     manager.add("ping", ping);
-    //ping({ "mmm", "bb" });
+    // ping({ "mmm", "bb" });
     auto count = [](vector<string> args) { printf("counted %zu args\n", args.size()); };
-    //count({ "aana", "aefbaj", "asjlksv", "assvsad" });
+    // count({ "aana", "aefbaj", "asjlksv", "assvsad" });
     manager.add("count", count);
     int a = 0;
     auto times = [a](vector<string> args) mutable {
         a++;
         printf("%d \n", a);
     };
-    //times({ "assvsd", "asfv" });
+    // times({ "assvsd", "asfv" });
     manager.add("times", times);
     string line;
     auto copy = [](vector<string> args) {
         filesystem::remove(args[1]);
-        filesystem::copy_file(args[0], args[1]); };
+        filesystem::copy_file(args[0], args[1]);
+    };
     manager.add("copy", copy);
-    //copy({ "image.png", "output.png" });
+    // copy({ "image.png", "output.png" });
 
     auto vowels = [nr = 0](vector<string> args) mutable {
         for (auto it = args.begin(); it != args.end(); ++it) {
@@ -95,7 +105,7 @@ int main() {
             printf("nr of vowels for '%s' is %d \n", key.c_str(), nr);
         }
     };
-    //vowels({ "ana", "are", "mere", "ccc" });
+    // vowels({ "ana", "are", "mere", "ccc" });
     manager.add("vowels", vowels);
     manager.run();
 
